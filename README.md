@@ -103,3 +103,7 @@
     * Provide User name and Passwd
     * Then run again the server: you will be able to connect
     * change password : python manage.py changepassword <username>
+
+# COMMIT
+- don't forget to make a 1st commit in this stage (?)
+
