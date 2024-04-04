@@ -91,19 +91,36 @@
     * Page not found (404), No tenant for hostname "127.0.0.1"
 - As workerround, add : SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
     * reference: #https://stackoverflow.com/questions/67221443/show-the-main-page-in-the-django-multi-tenant
+    * IMPORTANT: #Temporary for creating 1st public tenant using browser django admin. After creating 1st public tenant, need to remove (or comment) it.
 - http://127.0.0.1:8000/ & http://127.0.0.1:8000/admin are accessible now
 - So, we can create a Pucblic Tenant and it's domain URL
 
-# CREATE TENANT & DOMAIN
-- create a tenant whose schema is public and it’s address is your domain URL. https://django-tenants.readthedocs.io/en/latest/use.html
-    * create: http://127.0.0.1:8000/admin
-    * 1st tenant must be with schema_name='public'
-- We need to create a super user for connecting
+# CREATE 1st TENANT & DOMAIN
+- We need to create a super user for connecting to http://127.0.0.1:8000/admin
     * python manage.py createsuperuser
     * Provide User name and Passwd
+    * change password (if need): python manage.py changepassword <username>
     * Then run again the server: you will be able to connect
-    * change password : python manage.py changepassword <username>
+- create a tenant whose schema is public and it’s address is your domain URL. https://django-tenants.readthedocs.io/en/latest/use.html
+    * go to: http://127.0.0.1:8000/admin and create 1st tenant & domain
+    a) 1st tenant must be with schema_name='public' : becuase the DB is comes with Schemas(1), which contains only 'public' 
+    b) domain = 'localhost' #or your domain url
+    c) with domain, need to enter tenant = a)
+    d) is_primary = true
+- check in 'pgAdmin4' that tenant and his domain were created with success in 'public' schema
+
+# CREATE 2nd TENANT & DOMAIN
+- Create
+    * go to: http://127.0.0.1:8000/admin and create a tenant (not public) & his subdomain (or domain)
+    * schema_name='tenant1'
+    * domain = 'tenant1.domain.com'
+- check in 'pgAdmin4' : new schema has been created with name 'tenant1'
+- and so on for other tenants
+- Check in browser :
+    * http://localhost:8000/ : access OK
+    * http://tenant1.localhost:8000/ : access OK
+    * http://tenant2.localhost:8000/ : access NOK (not created yet)
+    * don't forget to comment (or remove) : SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
 # COMMIT
 - don't forget to make a 1st commit in this stage (?)
-

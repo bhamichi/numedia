@@ -141,4 +141,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
+# SHOW_PUBLIC_IF_NO_TENANT_FOUND = True #Temporary for creating 1st public tenant using browser django admin
