@@ -1,0 +1,94 @@
+[
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 1,
+      "fields": {
+        "name": "Software Requirements Specification (SRS)"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 2,
+      "fields": {
+        "name": "System Requirements Specification (SyRS)"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 3,
+      "fields": {
+        "name": "Business Requirements Specification (BRS)"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 4,
+      "fields": {
+        "name": "Functional Requirements Document (FRD)"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 5,
+      "fields": {
+        "name": "Non-Functional Requirements Document (NFRD)"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 6,
+      "fields": {
+        "name": "Software Design Documents (SDD)"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 7,
+      "fields": {
+        "name": "Change Requests"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 8,
+      "fields": {
+        "name": "Risk Management Plan"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 9,
+      "fields": {
+        "name": "Wireframes and Mockups"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 10,
+      "fields": {
+        "name": "Customer Document (CD)"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 11,
+      "fields": {
+        "name": "Test Case"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 12,
+      "fields": {
+        "name": "Test Plan"
+      }
+    },
+    {
+      "model": "my1stapp.DocumentType",
+      "pk": 13,
+      "fields": {
+        "name": "Test Report"
+      }
+    }
+  ]
+  

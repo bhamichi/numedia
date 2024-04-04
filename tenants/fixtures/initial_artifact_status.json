@@ -1,0 +1,38 @@
+[
+  {
+    "model": "my1stapp.ArtifactStatus",
+    "pk": 1,
+    "fields": {
+      "name": "Draft",
+      "color": "#CCCCCC",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactStatus",
+    "pk": 2,
+    "fields": {
+      "name": "In Progress",
+      "color": "#FFFF00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactStatus",
+    "pk": 3,
+    "fields": {
+      "name": "In Review",
+      "color": "#00BFFF",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactStatus",
+    "pk": 4,
+    "fields": {
+      "name": "Completed",
+      "color": "#008000",
+      "is_active": true
+    }
+  }
+]

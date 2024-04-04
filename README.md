@@ -122,5 +122,11 @@
     * http://tenant2.localhost:8000/ : access NOK (not created yet)
     * don't forget to comment (or remove) : SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
+# TENANTS MODELS
+- add models under 'tenants' app
+- add admin models under 'tenants' app
+- python manage.py makemigrations
+- python manage.py migrate_schemas [without --shared]
+
 # COMMIT
 - don't forget to make a 1st commit in this stage (?)
