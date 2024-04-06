@@ -1,6 +1,6 @@
 
 from pathlib import Path
-from decouple import config
+from decouple import config # TODO : not working with .env file
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,12 +17,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 SHARED_APPS = (
     'django_tenants',  # mandatory
-    'backend', # you must list the app where your tenant model resides in
+    'backend', # myapp where my tenant model resides in
 
     # everything below here is optional
     'django.contrib.admin',
@@ -31,22 +30,31 @@ SHARED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tenant_users.permissions',   
+    'tenant_users.tenants', 
 )
 
 TENANT_APPS = (
     # your tenant-specific apps
-    'tenants',
+    'tenants', # myapp tenants models resides in
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'tenant_users.permissions',
 )
+
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 TENANT_MODEL = "backend.Client" # app.Model
 
 TENANT_DOMAIN_MODEL = "backend.Domain"  # app.Model
 
+AUTHENTICATION_BACKENDS = (
+    "tenant_users.permissions.backend.UserBackend",
+)
 
+TENANT_USER_MODEL = "localhost"  # app.Model
 
-
-INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
-
+AUTH_USER_MODEL = "backend.TenantUser"  # app.Model
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
@@ -83,6 +91,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+''' TODO : not working with .env file
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
@@ -95,6 +104,22 @@ DATABASES = {
         'PORT': config('DB_PORT'),
     }
 }
+
+'''
+
+DATABASES = {
+    'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django_tenants.postgresql_backend',
+        'NAME': 'numedia_db',
+        'USER': 'numedia_user',
+        'PASSWORD': 'numedia_user',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 
 DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
@@ -141,4 +166,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SHOW_PUBLIC_IF_NO_TENANT_FOUND = True #Temporary for creating 1st public tenant using browser django admin
+SHOW_PUBLIC_IF_NO_TENANT_FOUND = True #Temporary for creating 1st public tenant using browser django admin

@@ -1,5 +1,6 @@
 from django.db import models
 from django_tenants.models import TenantMixin, DomainMixin
+from tenant_users.tenants.models import UserProfile
 
 class Client(TenantMixin):
     name = models.CharField(max_length=100)
@@ -17,3 +18,6 @@ class Domain(DomainMixin):
 AJouter le modèle TenantUser est lié aux modèles Client et Domain qui 
 se trouvent dans l'application Backend. 
 '''
+
+class TenantUser(UserProfile):
+    name = models.CharField(max_length=100)

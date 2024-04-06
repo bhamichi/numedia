@@ -1,4 +1,40 @@
-# GITHUB
+# Update Debian packages
+- sudo apt update
+- apt list --upgradable
+- sudo apt upgrade (if need)
+
+# Uninstall and remove PostgreSQL on Debian Linux (if need)
+- sudo apt-get --purge remove postgresql
+- sudo apt-get purge postgresql*
+- sudo apt-get --purge remove postgresql postgresql-doc postgresql-common
+- check: dpkg -l | grep postgres
+
+# Install/configure postgresql (if need)
+- sudo apt-get -y install postgresql
+- check, should be active: systemctl status postgresql 
+- Connect as 'postres' user and set a password: 
+    - sudo su - postgres
+    - psql
+    - ALTER USER postgres PASSWORD 'postgres';
+      => you should see in response ALTER ROLE
+
+# Installer pgadmin4 in web mode and configure with apach
+- Service appach running? sudo service apache2 status 
+- Install: sudo apt install pgadmin4-web
+- Configure pgadmin with apach: sudo /usr/pgadmin4/bin/setup-web.sh
+- Connect to http://127.0.0.1/pgadmin4/ (with already configured credential)
+- Pgadmin4: initiate a new connection into our db
+    * right click on servers > register
+    * Provide server [name=any], [host=localhost], [Username=postgres] and [passowrd=postgres] ... you should be able to connect 
+- Pgadmin4: register new user for our backend application
+    * Login/Group Roles > right click and CREATE
+    * Give the User [name=numedia_user], [password=numedia_user] and [previlages=Canlogin,CreateDatabase,InheritRight]
+- Pgadmin4: create a new db
+    * databases > create
+    * in General, [name=numedia_db], [Owner=numedia_user] (assign previous created user), then SAVE
+    * In schemas > public > tables, you will see no tables have been created
+
+# Github
 - in github, go to repository, then code, then copy url clone https
 - download git exetnsion in vscode : Source Controle
 - click on view Git Graph, then
@@ -12,26 +48,28 @@
 - keep packages up to date: sudo apt update
 - install: sudo apt install python3
 - check: python3 --version
-- install pip: sudo apt install python3-pip
-- install virtual env: sudo apt install python3-virtualenv
-- create virtual env: sudo virtualenv -p python3 venv
-- activate: ~/venv/bin/ then, source activate
+- install pip & virt. env.: sudo apt install python3-venv python3-pip
+- create virtual env: python3 -m venv venv
+- activate: source venv/bin/activate
 
-# DEPENDECIES
+# Dependencies
 - create under project a file : requirement.txt
-    django
+    django==4.2
     psycopg2-binary
     django-tenants
     python-decouple
+    Pillow
+    django-tenant-users
+    django-environ
 - install (sans sudo): pip install -r requirement.txt
 - check for example: django-admin --version
 
-# PROJECT & APPs
+# Porject & Apps
 - create project: django-admin startproject project .
 - create backend app: python manage.py startapp backend
 - create tenants app: python manage.py startapp tenants
 
-# DB SEETINGS
+# DB Settings
 - Prerequisite: the db (ex. numedia) must be created before
 - Create .env file by adding :
     DB_NAME=numedia
@@ -52,7 +90,7 @@
             }
         }
 
-# SEETINGS MULTI-TENANTS
+# Multi-Tenants Settings
 - referto url: https://django-tenants.readthedocs.io/en/latest/install.html
 - Here how shared and tennant apps are configured
     SHARED_APPS = (
@@ -83,7 +121,7 @@
         backend_client
         backend_domain
 
-# RUN SERV
+# Run Serv
 - python manage.py runserver
 - http://127.0.0.1:8000/
     * Page not found (404), No tenant for hostname "127.0.0.1"
@@ -92,10 +130,21 @@
 - As workerround, add : SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
     * reference: #https://stackoverflow.com/questions/67221443/show-the-main-page-in-the-django-multi-tenant
     * IMPORTANT: #Temporary for creating 1st public tenant using browser django admin. After creating 1st public tenant, need to remove (or comment) it.
+- we need to create a super user for connecting to http://127.0.0.1:8000/admin (only for new created project)
+- refer to: https://docs.djangoproject.com/en/1.8/intro/tutorial02/
+
+
 - http://127.0.0.1:8000/ & http://127.0.0.1:8000/admin are accessible now
 - So, we can create a Pucblic Tenant and it's domain URL
+- Reset Password via Django Shell: python manage.py shell
+    from backend.models import TenantUser
+    user = TenantUser.objects.get(email='b.hamichi@gmail.com')
+    user.set_password('new_password')
+    user.save()
+    exit()
+    note: Replace 'new_password' and 'email' with the desired
 
-# CREATE 1st TENANT & DOMAIN
+# Create 1st TENANT & DOMAIN
 - We need to create a super user for connecting to http://127.0.0.1:8000/admin
     * python manage.py createsuperuser
     * Provide User name and Passwd
@@ -109,7 +158,7 @@
     d) is_primary = true
 - check in 'pgAdmin4' that tenant and his domain were created with success in 'public' schema
 
-# CREATE 2nd TENANT & DOMAIN
+# Create 2nd TENANT & DOMAIN
 - Create
     * go to: http://127.0.0.1:8000/admin and create a tenant (not public) & his subdomain (or domain)
     * schema_name='tenant1'
@@ -122,20 +171,20 @@
     * http://tenant2.localhost:8000/ : access NOK (not created yet)
     * don't forget to comment (or remove) : SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
-# TENANTS MODELS
+# Tenants Models
 - add models under 'tenants' app
 - add admin models under 'tenants' app
 - python manage.py makemigrations
 - python manage.py migrate_schemas [without --shared]
 
-# DJANGO TENANT USERS
-*** les tables USER, GROUP et PERMISSION sont par défaut partagées entre tous les tenants. C'est parce que Django utilise les tables d'authentification de base de données pour tous les utilisateurs, indépendamment du schéma auquel ils appartiennent.
-Pour gérer les utilisateurs, groupes et permissions spécifiques à chaque locataire, vous pouvez utiliser la bibliothèque django-tenant-users
-***
+# Django Tenants Users
+* 
+les tables USER, GROUP et PERMISSION sont par défaut partagées entre tous les tenants. C'est parce que Django utilise les tables d'authentification de base de données pour tous les utilisateurs, indépendamment du schéma auquel ils appartiennent.
+Pour gérer les utilisateurs, groupes et permissions spécifiques à chaque  locataire, vous pouvez utiliser la bibliothèque django-tenant-users
+* 
+
 - https://django-tenant-users.readthedocs.io/en/latest/index.html#
 - Add 'django-tenant-users' to 'requirement.txt' and install
-
-
 
 # COMMIT
 - don't forget to make a 1st commit in this stage (?)
