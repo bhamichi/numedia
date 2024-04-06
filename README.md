@@ -128,5 +128,14 @@
 - python manage.py makemigrations
 - python manage.py migrate_schemas [without --shared]
 
+# DJANGO TENANT USERS
+*** les tables USER, GROUP et PERMISSION sont par défaut partagées entre tous les tenants. C'est parce que Django utilise les tables d'authentification de base de données pour tous les utilisateurs, indépendamment du schéma auquel ils appartiennent.
+Pour gérer les utilisateurs, groupes et permissions spécifiques à chaque locataire, vous pouvez utiliser la bibliothèque django-tenant-users
+***
+- https://django-tenant-users.readthedocs.io/en/latest/index.html#
+- Add 'django-tenant-users' to 'requirement.txt' and install
+
+
+
 # COMMIT
 - don't forget to make a 1st commit in this stage (?)
