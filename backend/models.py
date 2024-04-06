@@ -12,3 +12,8 @@ class Client(TenantMixin):
 
 class Domain(DomainMixin):
     pass
+
+'''
+AJouter le modèle TenantUser est lié aux modèles Client et Domain qui 
+se trouvent dans l'application Backend. 
+'''
