@@ -35,26 +35,39 @@ SHARED_APPS = (
 )
 
 TENANT_APPS = (
-    # your tenant-specific apps
     'tenants', # myapp tenants models resides in
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'tenant_users.permissions',
+    'django.contrib.auth', # Defined in both shared apps and tenant apps
+    'django.contrib.contenttypes', # Defined in both shared apps and tenant apps
+    'tenant_users.permissions', # Defined in both shared apps and tenant apps
 )
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
-TENANT_MODEL = "backend.Client" # app.Model
+# Modèle qui représente un tenant = 'Client' qui est défini dans app backend.
+TENANT_MODEL = "backend.Client"
 
-TENANT_DOMAIN_MODEL = "backend.Domain"  # app.Model
+# Modèle qui représente le domain d'un tenant = 'Domain' qui est défini dans app backend.
+TENANT_DOMAIN_MODEL = "backend.Domain"
 
-AUTHENTICATION_BACKENDS = (
-    "tenant_users.permissions.backend.UserBackend",
-)
+# Les backends d'authentification à utiliser pour vérifier les informations d'identification des utilisateurs lors de la connexion.
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend", "tenant_users.permissions.backend.UserBackend"
+]
 
-TENANT_USER_MODEL = "localhost"  # app.Model
+TENANT_USERS_DOMAIN = "localhost"
 
-AUTH_USER_MODEL = "backend.TenantUser"  # app.Model
+'''
+Le modèle spécifique au tenant (TenantUser) dans backend est utilisé à la fois: 
+comme modèle pour représenter les utilisateurs associés à chaque tenant; 
+et comme modèle global pour représenter tous les utilisateurs de l'application.
+TENANT_USER_MODEL est spécifique à l'environnement multi-tenant de votre 
+application, indiquant à Django quel modèle utiliser pour représenter 
+les utilisateurs associés à chaque locataire, tandis que AUTH_USER_MODEL 
+est utilisé de manière plus générale pour définir le modèle d'utilisateur pour toute l'application.
+'''
+
+TENANT_USER_MODEL = "backend.TenantUser"
+AUTH_USER_MODEL = "backend.TenantUser"
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
