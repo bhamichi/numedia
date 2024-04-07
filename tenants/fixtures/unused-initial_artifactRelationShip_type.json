@@ -1,0 +1,17 @@
+[
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 1,
+      "fields": {
+        "type": "Document"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 2,
+      "fields": {
+        "type": "Requirement"
+      }
+    }
+]
+  

@@ -1,0 +1,73 @@
+[
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 1,
+      "fields": {
+        "relation": "Depends-On"       
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 2,
+      "fields": {
+        "relation": "Parent-Of"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 3,
+      "fields": {
+        "relation": "Child-Of"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 4,
+      "fields": {
+        "relation": "Relates-To"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 5,
+      "fields": {
+        "relation": "Interracts With"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 6,
+      "fields": {
+        "relation": "Derive"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 7,
+      "fields": {
+        "relation": "Satisfy"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 8,
+      "fields": {
+        "relation": "Verify"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 9,
+      "fields": {
+        "relation": "Trace"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactRelationship",
+      "pk": 10,
+      "fields": {
+        "relation": "Impact"
+      }
+    }
+]
+  

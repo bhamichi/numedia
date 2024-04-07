@@ -1,0 +1,39 @@
+[
+    {
+      "model": "my1stapp.CommentSeverity",
+      "pk": 1,
+      "fields": {
+        "name": "Critical",
+        "is_active": true,
+        "color": "#e06666"
+      }
+    },
+    {
+      "model": "my1stapp.CommentSeverity",
+      "pk": 2,
+      "fields": {
+        "name": "High",
+        "is_active": true,
+        "color": "#e69138"
+      }
+    },
+    {
+      "model": "my1stapp.CommentSeverity",
+      "pk": 3,
+      "fields": {
+        "name": "Medium",
+        "is_active": true,
+        "color": "#ffd966"
+      }
+    },
+    {
+      "model": "my1stapp.CommentSeverity",
+      "pk": 4,
+      "fields": {
+        "name": "Low",
+        "is_active": true,
+        "color": "#fff2cc"
+      }
+    }
+  ]
+  

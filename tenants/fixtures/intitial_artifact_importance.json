@@ -1,0 +1,48 @@
+[
+    {
+      "model": "my1stapp.ArtifactImportance",
+      "pk": 1,
+      "fields": {
+        "name": "Critical",
+        "is_active": true,
+        "color": "#e06666"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactImportance",
+      "pk": 2,
+      "fields": {
+        "name": "High",
+        "is_active": true,
+        "color": "#e69138"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactImportance",
+      "pk": 3,
+      "fields": {
+        "name": "Medium",
+        "is_active": true,
+        "color": "#ffd966"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactImportance",
+      "pk": 4,
+      "fields": {
+        "name": "Low",
+        "is_active": true,
+        "color": "#fff2cc"
+      }
+    },
+    {
+      "model": "my1stapp.ArtifactImportance",
+      "pk": 5,
+      "fields": {
+        "name": "Nice-to-have",
+        "is_active": true,
+        "color": "#d9ead3"
+      }
+    }
+  ]
+  

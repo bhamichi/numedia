@@ -1,0 +1,7 @@
+django==4.2
+psycopg2-binary
+django-tenants
+python-decouple
+Pillow
+django-tenant-users
+django-extensions

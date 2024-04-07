@@ -1,0 +1,18 @@
+[
+    {
+        "model": "my1stapp.RelationshipType",
+        "pk": "1",
+        "fields": {
+          "name": "Artifact to Artifact"
+        }
+    },
+    {
+        "model": "my1stapp.RelationshipType",
+        "pk": "2",
+        "fields": {
+          "name": "Artifact to Document"
+        }
+    }
+      
+  ]
+  

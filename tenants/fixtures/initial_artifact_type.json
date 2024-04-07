@@ -1,0 +1,138 @@
+[
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 1,
+    "fields": {
+      "name": "User Stories",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 2,
+    "fields": {
+      "name": "User Scenarios",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 3,
+    "fields": {
+      "name": "Use Cases",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 4,
+    "fields": {
+      "name": "Requirements Specifications",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 5,
+    "fields": {
+      "name": "Functional Requirements",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 6,
+    "fields": {
+      "name": "Non-Functional Requirements",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 7,
+    "fields": {
+      "name": "Business Requirements",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 8,
+    "fields": {
+      "name": "System Requirements",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 9,
+    "fields": {
+      "name": "Stakeholder Requirements",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 12,
+    "fields": {
+      "name": "Epics",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 13,
+    "fields": {
+      "name": "Acceptance Criteria",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 14,
+    "fields": {
+      "name": "User Needs",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 15,
+    "fields": {
+      "name": "Feature Requests",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 16,
+    "fields": {
+      "name": "Constraints",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 17,
+    "fields": {
+      "name": "Assumptions",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 19,
+    "fields": {
+      "name": "Objectives",
+      "is_active": true
+    }
+  },
+  {
+    "model": "my1stapp.ArtifactType",
+    "pk": 20,
+    "fields": {
+      "name": "Value Propositions",
+      "is_active": true
+    }
+  }
+]
